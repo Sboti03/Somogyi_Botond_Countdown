@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="hu.petrik.countdown.countdown.CountdownController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <HBox spacing="10.0">
+      <children>
+         <TextField fx:id="inputField" promptText="éééé. hh. nn. óó:pp:mm" text="2022.11.10. 00:00:00" />
+         <Button fx:id="startBtn" onAction="#start" mnemonicParsing="false" text="Indít" />
+      </children>
+   </HBox>
+   <Label fx:id="outLabel" text="Label" />
+</VBox>
