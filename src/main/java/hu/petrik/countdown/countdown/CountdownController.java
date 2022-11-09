@@ -36,18 +36,25 @@ public class CountdownController {
             makeAlert("Hibás dátum!");
             return;
         }
+        startBtn.setDisable(true);
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(()-> {
-                    Duration duration = Duration.between(goalTime.toLocalTime(), LocalTime.now());
+                    Duration duration = Duration.between(LocalTime.now(),goalTime.toLocalTime());
                     Period period = Period.between(LocalDate.now(), goalTime.toLocalDate());
-                    if(!duration.isNegative()) {
+                    if(duration.isNegative()) {
                         duration = Duration.between(LocalTime.now(), LocalTime.parse("23:59:59"));
                         period = period.minusDays(1);
                     }
                     if (goalTime.isBefore(LocalDateTime.now())) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Vége");
+                        alert.setContentText("Elérte a beállított időzétést");
+                        alert.show();
+                        outLabel.setText("");
+                        startBtn.setDisable(false);
                         timer.cancel();
                     }
 
@@ -63,6 +70,7 @@ public class CountdownController {
             }
         };
         timer.schedule(timerTask, 0,1000);
+
     }
     private LocalDateTime parseToLocalDateTime(String value) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd. HH:mm:ss");

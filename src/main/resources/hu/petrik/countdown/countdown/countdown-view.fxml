@@ -17,5 +17,5 @@
          <Button fx:id="startBtn" onAction="#start" mnemonicParsing="false" text="Indít" />
       </children>
    </HBox>
-   <Label fx:id="outLabel" text="Label" />
+   <Label fx:id="outLabel" text="" />
 </VBox>
